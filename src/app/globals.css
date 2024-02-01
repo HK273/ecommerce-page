@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  overflow-x: hidden;
+}
+
+:root {
+  /* Primary */
+  --orange: hsl(26, 100%, 55%);
+  --pale-orange: hsl(25, 100%, 94%);
+  /* Neutral */
+  --v-dark-blue: hsl(220, 13%, 13%);
+  --dark-grayish-blue: hsl(219, 9%, 45%);
+  --grayish-blue: hsl(220, 14%, 75%);
+  --l-grayish-blue: hsl(223, 64%, 98%);
+  --white: hsl(0, 0%, 100%);
+  /* 75% opactiy */
+  --black-lightbox: hsl(0, 0%, 0%);
+}
+
+.f-kumb-400 {
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 400;
+}
+
+/* Position cart count right corner of button */
+.item-counter {
+  color: white;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  border-radius: 0.3rem;
+  margin-top: 3rem;
+}
+.text-orange {
+  color: var(--orange);
+}
+.bg-c-o {
+  background-color: var(--orange);
+}
+.text-orange {
+  color: var(--orange);
+}
+.bg-c-g-b {
+  background-color: var(--l-grayish-blue);
+}
+
+#lightbox {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+
+#lightbox.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+/* When thumbnail is slected */
+.selected {
+  background-color: var(--orange);
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+}
+.cart {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+/* Cart */
+@media only screen and (max-width: 40em) {
+  .cart {
+    width: 100%;
+  }
+}
+
+/* Mobile nav */
+@media only screen and (max-width: 70em) {
+  nav {
+    position: fixed;
+    top: 0;
+    /* Take the nav off screen */
+    left: -100vw;
+    width: 70%;
+    height: 100%;
+    z-index: 99;
+
+    /* Add tailwind classes with @apply */
+    @apply shadow-2xl;
+  }
+  nav ul {
+    @apply flex flex-col gap-4 mt-10 ml-4;
+  }
+  nav.open {
+    top: 0;
+    left: 0;
+    background-color: white;
+  }
+}
+
+/* Additional image styles to make next images responsive */
+@media only screen and (max-width: 70em) {
+  .image-container {
+    width: 100%;
+
+    .image {
+      object-fit: contain;
+      width: 100% !important;
+      position: relative !important;
+      height: unset !important;
+    }
+  }
+}

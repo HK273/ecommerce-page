@@ -1,0 +1,59 @@
+/* Import styles */
+
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+.nav-items {
+  display: none;
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 800;
+  align-items: center;
+}
+.item {
+  margin-bottom: 1rem;
+}
+.nav-items.active {
+  display: block;
+  margin: 1rem 0 0 2rem;
+}
+.nav-menu.active,
+.hamburger-grid.active {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.hamburger {
+  margin: 1rem 0 1rem 2rem;
+}
+.nav-opac.active {
+  min-height: 100%;
+  background-color: green;
+  opacity: 0.5;
+}
+.nav-opac {
+  min-height: 100%;
+  opacity: 0.5;
+}
+.flex-menu {
+  display: grid;
+}
+
+@media only screen and (min-width: 60em) {
+  .nav-items {
+    display: flex;
+    gap: 3rem;
+    margin: 2rem 0 0 2rem;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .nav-opac {
+    display: none;
+  }
+  .nav-items.active {
+    display: flex;
+  }
+  .hamburger {
+    display: none;
+  }
+  img {
+    display: flex;
+  }
+}
