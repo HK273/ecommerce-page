@@ -2,20 +2,40 @@
 import { useEffect, useState } from "react";
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
+  // Initialize your state with a default value. This will be updated to the correct
+  // value from localStorage (if available) once the component mounts and runs in the client.
   const [value, setValue] = useState<T>(() => {
-    const jsonValue = localStorage.getItem(key);
-    if (jsonValue != null) return JSON.parse(jsonValue);
-
-    if (typeof initialValue === "function") {
-      return (initialValue as () => T)();
-    } else {
-      return initialValue;
-    }
+    // Check if initialValue is a function and call it to get the initial value,
+    // otherwise, just use initialValue directly.
+    return typeof initialValue === "function"
+      ? (initialValue as () => T)()
+      : initialValue;
   });
 
-  // Call an effect to update local storage each time 'value' changes
+  // Use useEffect to interact with localStorage once the component has mounted
+  // and is running in the client-side environment where window is available.
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
+    try {
+      const jsonValue = localStorage.getItem(key);
+      // Only update the state if jsonValue is not null, otherwise keep the initial state
+      if (jsonValue != null) {
+        setValue(JSON.parse(jsonValue));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    // This effect should only run once on mount, hence the empty dependency array.
+    // However, if you want it to run whenever the key changes, you can include [key] in the dependency array.
+  }, [key]);
+
+  // Call an effect to update localStorage each time 'value' changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.log(error);
+    }
   }, [key, value]);
 
   return [value, setValue] as [typeof value, typeof setValue];
