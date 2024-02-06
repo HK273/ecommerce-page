@@ -2,6 +2,8 @@
 
 This is a solution to the [E-commerce product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6)
 
+- [Live Site](https://ecommerce-page-gold.vercel.app/)
+
 ## Useful resources
 
 - [Manage images in Next and tailwind](https://stackoverflow.com/questions/72069858/next-image-shrinking-inside-flexbox-with-tailwind)
@@ -29,3 +31,5 @@ Was getting this error when refreshing the page in dev mode...
 ```
 
 Found a resolution [here](https://github.com/vercel/next.js/issues/47394) to remove node_modules and package-lock.json and re-install dependencies. Also had to remove the .next folder to get this back working [info](https://stackoverflow.com/questions/73306304/w-webpack-cache-packfilecachestrategy-caching-failed-for-pack-error-unable)
+
+- Info on [localStorage is not defined](https://medium.com/@zamin_mirzad/how-to-fix-localstorage-is-not-defined-in-next-js-b237498d12ce)

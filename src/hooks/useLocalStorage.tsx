@@ -2,11 +2,12 @@
 import { useEffect, useState } from "react";
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
-  // Initialize your state with a default value. This will be updated to the correct
-  // value from localStorage (if available) once the component mounts and runs in the client.
+  /**
+   * Initialize state with a default value.
+   * This will be updated from localStorage (if available) once the component mounts and runs in the client.
+   */
   const [value, setValue] = useState<T>(() => {
-    // Check if initialValue is a function and call it to get the initial value,
-    // otherwise, just use initialValue directly.
+    //  Check if initialValue is a function, otherwise just use initialValue directly.
     return typeof initialValue === "function"
       ? (initialValue as () => T)()
       : initialValue;
